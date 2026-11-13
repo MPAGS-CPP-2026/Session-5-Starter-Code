@@ -3,6 +3,56 @@
 #include <string>
 #include <vector>
 
+std::string transformChar( const char in_char )
+{
+    // initialise local variables
+    std::string in_text{""};
+
+    // Uppercase alphabetic characters
+    if (std::isalpha(in_char)) {
+        in_text += std::toupper(in_char);
+        return in_text;
+    }
+
+    // Transliterate digits to English words
+    switch (in_char) {
+        case '0':
+            in_text += "ZERO";
+            break;
+        case '1':
+            in_text += "ONE";
+            break;
+        case '2':
+            in_text += "TWO";
+            break;
+        case '3':
+            in_text += "THREE";
+            break;
+        case '4':
+            in_text += "FOUR";
+            break;
+        case '5':
+            in_text += "FIVE";
+            break;
+        case '6':
+            in_text += "SIX";
+            break;
+        case '7':
+            in_text += "SEVEN";
+            break;
+        case '8':
+            in_text += "EIGHT";
+            break;
+        case '9':
+            in_text += "NINE";
+            break;
+    }
+
+    // If the character isn't alphabetic or numeric, DONT add it
+
+    return in_text;
+}
+
 int main(int argc, char* argv[])
 {
     // Convert the command-line arguments into a more easily usable form
@@ -97,47 +147,7 @@ int main(int argc, char* argv[])
 
     // loop over each character from user input
     while (std::cin >> inputChar) {
-        // Uppercase alphabetic characters
-        if (std::isalpha(inputChar)) {
-            inputText += std::toupper(inputChar);
-            continue;
-        }
-
-        // Transliterate digits to English words
-        switch (inputChar) {
-            case '0':
-                inputText += "ZERO";
-                break;
-            case '1':
-                inputText += "ONE";
-                break;
-            case '2':
-                inputText += "TWO";
-                break;
-            case '3':
-                inputText += "THREE";
-                break;
-            case '4':
-                inputText += "FOUR";
-                break;
-            case '5':
-                inputText += "FIVE";
-                break;
-            case '6':
-                inputText += "SIX";
-                break;
-            case '7':
-                inputText += "SEVEN";
-                break;
-            case '8':
-                inputText += "EIGHT";
-                break;
-            case '9':
-                inputText += "NINE";
-                break;
-        }
-
-        // If the character isn't alphabetic or numeric, DONT add it
+        inputText += transformChar(inputChar);
     }
 
     // Print out the transliterated text
